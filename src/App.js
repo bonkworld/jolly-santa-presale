@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 
 import { Button, Paper, Typography, Box } from "@material-ui/core";
 import _find from "lodash/find";
+import CssBaseline from "@mui/material/CssBaseline";
 
 const distributionList = [
   {
@@ -1048,63 +1049,84 @@ function App() {
   };
 
   return (
-    <Paper style={{ backgroundColor: "green" }}>
-      <Typography
+    <div
+      className="App"
+      style={{
+        display: "flex",
+        backgroundColor: "#ea4630",
+        height: "100vh",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <CssBaseline />
+      <Box
+        maxWidth="60ch"
+        width="calc(100% - 60px)"
         style={{
-          display: "flex",
-          justifyContent: "flex-start",
-          marginLeft: "12px",
+          marginLeft: "auto",
+          marginRight: "auto",
         }}
-        variant="h5"
       >
-        Enter Solana Wallet Address
-      </Typography>
-      <Formik initialValues={{ address: "" }} onSubmit={handleSubmit}>
-        {() => (
-          <Form>
-            <Box>
-              <Field
-                style={{ width: "95%", marginTop: "10px" }}
-                name="address"
-                placeholder="Solana Wallet Address"
-              />
-              <Button
-                style={{
-                  backgroundColor: "black",
-                  color: "white",
-                  width: "30%",
-                  marginTop: "10px",
-                  marginBottom: "10px",
-                }}
-                type="submit"
-              >
-                Search
-              </Button>
-            </Box>
-          </Form>
-        )}
-      </Formik>
-      {searched &&
-        (url !== "" ? (
-          <Box>
-            <h3>
-              Address found:&nbsp;&nbsp;
-              <a
-                href={url}
-                style={{ color: "white" }}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Click here to go to pre-sale.
-              </a>
-            </h3>
-          </Box>
-        ) : (
-          <Box>
-            <p>No result found.</p>
-          </Box>
-        ))}
-    </Paper>
+        <Paper style={{ backgroundColor: "green" }}>
+          <Typography
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              marginLeft: "12px",
+            }}
+            variant="h5"
+          >
+            Enter Solana Wallet Address
+          </Typography>
+          <Formik initialValues={{ address: "" }} onSubmit={handleSubmit}>
+            {() => (
+              <Form>
+                <Box>
+                  <Field
+                    style={{ width: "95%", marginTop: "10px" }}
+                    name="address"
+                    placeholder="Solana Wallet Address"
+                  />
+                  <Button
+                    style={{
+                      backgroundColor: "black",
+                      color: "white",
+                      width: "30%",
+                      marginTop: "10px",
+                      marginBottom: "10px",
+                    }}
+                    type="submit"
+                  >
+                    Search
+                  </Button>
+                </Box>
+              </Form>
+            )}
+          </Formik>
+          {searched &&
+            (url !== "" ? (
+              <Box>
+                <h3>
+                  Address found:&nbsp;&nbsp;
+                  <a
+                    href={url}
+                    style={{ color: "white" }}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Click here to go to pre-sale.
+                  </a>
+                </h3>
+              </Box>
+            ) : (
+              <Box>
+                <p>No result found.</p>
+              </Box>
+            ))}
+        </Paper>
+      </Box>
+    </div>
   );
 }
 
