@@ -1047,6 +1047,8 @@ const Search = () => {
   const [url, setUrl] = React.useState("");
 
   const handleSubmit = (values, actions) => {
+    setSearched(false);
+    setUrl("");
     actions.setSubmitting(true);
     const thang = _find(distributionList, { handle: values.address });
     if (thang) {
